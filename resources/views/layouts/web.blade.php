@@ -27,9 +27,10 @@
                 </a>
                 @auth
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                    <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
-                    <a href="{{ route('order-form') }}" class="mr-5 hover:text-gray-900">Order Form</a>
-                    <a href="{{ route('order-list') }}" class="mr-5 hover:text-gray-900">Order List</a>
+                    <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dasbor</a>
+                    <a href="{{ route('order-form') }}" class="mr-5 hover:text-gray-900">Formulir Pesanan</a>
+                    <a href="{{ route('order-list') }}" class="mr-5 hover:text-gray-900">Daftar Pesanan</a>
+                </nav>
                 </nav>
                     <a href="{{ route('logout') }}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
                         Keluar

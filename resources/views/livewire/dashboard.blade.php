@@ -24,7 +24,6 @@
                     <tr>
                         <th>Tanggal</th>
                         <th>No. Pesanan</th>
-                        <th>Item</th>
                         <th>Total Harga</th>
                     </tr>
                 </thead>
@@ -33,11 +32,6 @@
                         <tr>
                             <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
                             <td class="font-bold">{{ $order->order_no }}</td>
-                            <td>
-                                @foreach(json_decode($order->items) as $item)
-                                    {{ $item->name }} x {{ $item->qty }}<br>
-                                @endforeach
-                            </td>
                             <td>Rp {{ number_format($order->total_price, 0, ',', '.') }}</td>
                         </tr>
                     @endforeach

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Order;
+use App\Models\Product;
 use Livewire\Component;
 
 class OrderForm extends Component
@@ -13,7 +14,7 @@ class OrderForm extends Component
     
     public function mount()
     {
-        $products = \App\Models\Product::all();
+        $products = Product::orderBy('name')->get();
         foreach ($products as $product) {
             $this->products[$product->sku] = [
                 'sku' => $product->sku,
