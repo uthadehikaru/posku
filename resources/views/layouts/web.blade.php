@@ -10,6 +10,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+        <link rel="icon" href="{{ asset('POSku.png') }}" type="image/x-icon">
+
         <!-- DaisyUI CSS -->
         <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.6/dist/full.css" rel="stylesheet" type="text/css" />
         
@@ -20,22 +22,29 @@
         <header class="text-gray-600 body-font">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                 <a href="{{ url('/') }}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
+                <img src="{{ asset('POSku.png') }}" alt="PosKu Logo" class="w-10 h-10 object-contain">
                 <span class="ml-3 text-xl">{{ config('app.name' )}}</span>
                 </a>
+                @auth
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <a class="mr-5 hover:text-gray-900">First Link</a>
-                <a class="mr-5 hover:text-gray-900">Second Link</a>
-                <a class="mr-5 hover:text-gray-900">Third Link</a>
-                <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+                    <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
+                    <a href="{{ route('order-form') }}" class="mr-5 hover:text-gray-900">Order Form</a>
+                    <a href="{{ route('order-list') }}" class="mr-5 hover:text-gray-900">Order List</a>
+                </nav>
+                    <a href="{{ route('logout') }}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+                        Keluar
+                    </a>
+                @endauth
+                @guest
+                <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                    <a href="{{ route('about') }}" class="mr-5 hover:text-gray-900">Tentang Kami</a>
                 </nav>
                 <a href="{{ route('login') }}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Masuk
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
                 </a>
+                @endguest
             </div>
         </header>
         @yield('content')
