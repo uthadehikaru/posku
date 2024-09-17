@@ -5,7 +5,7 @@
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
                     <h2 class="card-title">Products</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         <!-- Sample product items, replace with your actual product data -->
                         @foreach ($products as $product)
                             <div class="card bg-base-200 shadow-sm">
@@ -13,7 +13,7 @@
                                 <div class="card-body p-4">
                                     <h3 class="card-title text-sm">{{ $product['name'] }}</h3>
                                     <p class="text-xs">Rp {{ number_format($product['price'], 0, ',', '.') }}</p>
-                                    <div class="flex items-center mt-2">
+                                    <div class="flex items-center mt-2 w-full justify-center">
                                         <button wire:click="decreaseQty('{{ $product['sku'] }}')" class="btn btn-sm btn-outline">-</button>
                                         <input type="number" wire:model="products.{{ $product['sku'] }}.qty" class="input input-bordered input-sm w-16 mx-2" min="1" value="1">
                                         <button wire:click="increaseQty('{{ $product['sku'] }}')" class="btn btn-sm btn-outline">+</button>
@@ -34,7 +34,7 @@
                     {{ session('message') }}
                 </div>
             @endif
-            <div class="card bg-base-100 shadow-xl">
+            <div class="card bg-base-100 shadow-xl sticky top-4">
                 <div class="card-body">
                     <h2 class="card-title">Order List</h2>
                     <ul class="list-none p-0">

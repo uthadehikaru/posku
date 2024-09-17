@@ -17,6 +17,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@laravel.test',
             'password' => Hash::make('secret'),
+            'role' => 'admin',
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Employee',
+            'email' => 'employee@laravel.test',
+            'password' => Hash::make('secret'),
+            'role' => 'employee',
         ]);
 
         $this->call([

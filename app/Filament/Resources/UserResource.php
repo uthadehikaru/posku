@@ -35,6 +35,13 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('role')
+                    ->options([
+                        'admin' => 'Admin',
+                        'employee' => 'Employee',
+                    ])
+                    ->default('employee')
+                    ->required(),
             ]);
     }
 
@@ -48,6 +55,8 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('role')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

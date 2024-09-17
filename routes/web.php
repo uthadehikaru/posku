@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', 'login');
-Route::get('login', LoginForm::class)->name('login');
+Route::middleware('guest')->get('login', LoginForm::class)->name('login');
 Route::view('about', 'about')->name('about');
 Route::get('logout', function() {
     Auth::logout();
