@@ -18,6 +18,7 @@ class OrderForm extends Component
             $this->products[$product->sku] = [
                 'sku' => $product->sku,
                 'name' => $product->name,
+                'image' => $product->image,
                 'qty' => 1,
                 'price' => $product->price,
             ];

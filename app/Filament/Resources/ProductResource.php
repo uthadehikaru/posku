@@ -32,6 +32,9 @@ class ProductResource extends Resource
                     ->required()
                     ->numeric()
                     ->prefix('IDR'),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->directory('products'),
             ]);
     }
 
@@ -55,6 +58,9 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('price')
                     ->money('IDR')
                     ->sortable(),
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular()
+                    ->size(100),
             ])
             ->filters([
                 //

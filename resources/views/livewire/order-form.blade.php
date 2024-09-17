@@ -9,7 +9,9 @@
                         <!-- Sample product items, replace with your actual product data -->
                         @foreach ($products as $product)
                             <div class="card bg-base-200 shadow-sm">
-                                <figure><img src="{{ asset('item.png') }}" width="100" height="100" class="p-2" alt="Product {{ $product['sku'] }}" /></figure>
+                                <figure>
+                                    <img src="{{ $product['image'] ? asset('storage/' . $product['image']) : asset('item.png') }}" width="100" height="100" class="p-2" alt="Product {{ $product['sku'] }}" />
+                                </figure>
                                 <div class="card-body p-4">
                                     <h3 class="card-title text-sm">{{ $product['name'] }}</h3>
                                     <p class="text-xs">Rp {{ number_format($product['price'], 0, ',', '.') }}</p>

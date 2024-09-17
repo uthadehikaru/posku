@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('sku')->unique();
             $table->string('name');
             $table->integer('price');
+            $table->string('image')->nullable();
         });
     }
 
