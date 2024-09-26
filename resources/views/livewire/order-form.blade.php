@@ -67,6 +67,11 @@
                     {{ session('message') }}
                 </div>
             @endif
+            @if(session('error'))
+                <div class="alert alert-error mb-4">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="card bg-base-100 shadow-xl sticky top-4">
                 <div class="card-body">
                     <h2 class="card-title">Daftar Pesanan</h2>

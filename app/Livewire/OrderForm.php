@@ -68,12 +68,17 @@ class OrderForm extends Component
 
     public function checkout()
     {
+        if(!$this->cart){
+            session()->flash('error', 'keranjang kosong');
+            return;
+        }
+
         $order = new Order();
         $order->order_no = 'ORD-' . time();
         $order->total_price = $this->totalPrice;
         $order->items = json_encode($this->cart);
         $order->save();
-        session()->flash('message', 'Order created: ' . $order->order_no);
+        session()->flash('message', 'Pesanan berhasil dibuat: ' . $order->order_no);
 
         $this->cart = [];
         $this->totalPrice = 0;
