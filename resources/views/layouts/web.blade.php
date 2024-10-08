@@ -18,24 +18,13 @@
         <!-- Tailwind CSS (required for DaisyUI) -->
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
+    <body class="flex flex-col min-h-screen">
         <header class="text-gray-600 body-font">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                 <a href="{{ url('/') }}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                 <img src="{{ asset('POSku.png') }}" alt="PosKu Logo" class="w-10 h-10 object-contain">
                 <span class="ml-3 text-xl">{{ config('app.name' )}}</span>
                 </a>
-                @auth
-                <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                    <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dasbor</a>
-                    <a href="{{ route('order-form') }}" class="mr-5 hover:text-gray-900">Formulir Pesanan</a>
-                    <a href="{{ route('order-list') }}" class="mr-5 hover:text-gray-900">Daftar Pesanan</a>
-                </nav>
-                </nav>
-                    <a href="{{ route('logout') }}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-                        Keluar
-                    </a>
-                @endauth
                 @guest
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     <a href="{{ route('about') }}" class="mr-5 hover:text-gray-900">Tentang Kami</a>
@@ -48,42 +37,36 @@
                 @endguest
             </div>
         </header>
-        @yield('content')
-        <footer class="text-gray-600 body-font">
-            <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        <main class="flex-grow">
+            @yield('content')
+        </main>
+        @auth
+        <nav class="btm-nav bg-white shadow-lg fixed bottom-0 left-0 right-0">
+            <a href="{{ route('dashboard') }}" class="text-center {{ request()->routeIs('dashboard') ? 'active text-primary' : '' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <span class="ml-3 text-xl">{{ config('app.name' )}}</span>
-                </a>
-                <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© {{ date('Y') }} {{ config('app.name' )}}
-                </p>
-                <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a class="text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                </a>
-                <a class="ml-3 text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                </a>
-                <a class="ml-3 text-gray-500">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                    </svg>
-                </a>
-                <a class="ml-3 text-gray-500">
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                    <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                    </svg>
-                </a>
-                </span>
-            </div>
-            </footer>
+                <span class="btm-nav-label">Dasbor</span>
+            </a>
+            <a href="{{ route('order-form') }}" class="text-center {{ request()->routeIs('order-form') ? 'active text-primary' : '' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                <span class="btm-nav-label">Formulir Pesanan</span>
+            </a>
+            <a href="{{ route('order-list') }}" class="text-center {{ request()->routeIs('order-list') ? 'active text-primary' : '' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                <span class="btm-nav-label">Daftar Pesanan</span>
+            </a>
+            <a href="{{ route('logout') }}" class="text-center {{ request()->routeIs('logout') ? 'active text-primary' : '' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                <span class="btm-nav-label">Keluar</span>
+            </a>
+        </nav>
+        @endauth
     </body>
 </html>
